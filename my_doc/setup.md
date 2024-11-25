@@ -86,9 +86,13 @@ socket=/home/admin/work/mysql-server/build/install/mysql.sock
 
 `/home/admin/work/mysql-server/build/install/bin/mysqld --defaults-file=/home/admin/work/mysql-server/build/install/etc/my.cnf`
 
-
-`ALTER USER 'root'@'localhost' IDENTIFIED BY '12345678';`
-
+### Set the root user for local and remote access
+```
+ALTER USER 'root'@'localhost' IDENTIFIED BY '12345678';
+CREATE USER 'root'@'%' IDENTIFIED BY '12345678';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+```
 launch.json
 ```
 {
